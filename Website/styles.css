@@ -923,3 +923,21 @@ html[lang="zh-CN"] .closing h2 { letter-spacing: -.02em; line-height: 1.15; }
 .nav-gh:hover { background: var(--fill); color: var(--ink); }
 .nav-gh svg { width: 16px; height: 16px; }
 @media (max-width: 640px) { .nav-gh { width: 32px; padding: 0; justify-content: center; } .nav-gh span { display: none; } }
+
+/* Colour tiles (the app's ColorTile): fixed Apple system colours by meaning, not tone-driven. */
+.ctile {
+  --tc: oklch(.64 .19 310); --tl: oklch(.70 .19 310);
+  width: 40px; height: 40px; border-radius: 10.5px; display: grid; place-items: center; margin-bottom: 16px; color: #fff;
+  background: linear-gradient(180deg, var(--tl), var(--tc));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .35), inset 0 0 0 .5px rgb(0 0 0 / .08), 0 1px 2px rgb(0 0 0 / .12), 0 2px 6px -2px rgb(0 0 0 / .12);
+}
+.ctile svg { width: 22px; height: 22px; filter: drop-shadow(0 .5px 0 rgb(0 0 0 / .12)); }
+.mini.big .ctile { width: 44px; height: 44px; border-radius: 11px; margin-bottom: 18px; }
+.mini.big .ctile svg { width: 24px; height: 24px; }
+.ct-purple { --tc: oklch(.64 .19 310); --tl: oklch(.70 .19 310); }
+.ct-orange { --tc: oklch(.77 .165 64);  --tl: oklch(.83 .15 64); }
+.ct-teal   { --tc: oklch(.72 .115 215); --tl: oklch(.78 .105 215); }
+.ct-indigo { --tc: oklch(.58 .18 280);  --tl: oklch(.64 .18 280); }
+.ct-red    { --tc: oklch(.65 .21 28);   --tl: oklch(.71 .19 28); }
+.ct-blue   { --tc: oklch(.63 .2 257);   --tl: oklch(.69 .19 257); }
+.ct-green  { --tc: oklch(.74 .18 148);  --tl: oklch(.80 .17 148); }
