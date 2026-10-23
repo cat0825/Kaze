@@ -67,12 +67,12 @@
     'imp.title': '一步，全部搬过来。',
     'imp.lead': '从 Chrome、Arc、Edge、Brave 或 Safari，带上你的标签页、登录信息、书签、历史记录和扩展。Chrome 扩展照常能用。',
     'imp.tabs': '打开的标签页', 'imp.logins': '登录信息', 'imp.bookmarks': '书签', 'imp.history': '历史记录', 'imp.ext': '扩展',
-    'priv.title': '你的密钥，你的模型，你的 Mac。',
+    'priv.title': '用你自己的模型，数据留在你的 Mac 上。',
     'priv.1.t': '用你自己的模型', 'priv.1.p': '智能体用你选的模型、你自己的密钥运行。想换随时换。',
     'priv.2.t': '本地优先', 'priv.2.p': '活动记录、历史和设置都存在你的 Mac 上，智能体也从那里回忆。',
     'priv.3.t': 'English 和简体中文', 'priv.3.p': '整个应用，两种语言。',
     'close.title': '风过，事成。',
-    'close.p': 'Kaze 就是「風」。你不会注意到浏览器本身，只会看到事情做完了。',
+    'close.p': 'Kaze 是日语里的「風」。交给它一件事，看你的标签页自己动起来。',
     'foot.releases': '版本发布'
   };
 
