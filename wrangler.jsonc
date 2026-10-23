@@ -1,0 +1,13 @@
+{
+  // kaze.build: the homepage in Website/, served as static assets by Cloudflare.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kaze-website",
+  "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "Website"
+  },
+  "routes": [
+    { "pattern": "kaze.build", "custom_domain": true },
+    { "pattern": "www.kaze.build", "custom_domain": true }
+  ]
+}
