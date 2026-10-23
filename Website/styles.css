@@ -925,19 +925,27 @@ html[lang="zh-CN"] .closing h2 { letter-spacing: -.02em; line-height: 1.15; }
 @media (max-width: 640px) { .nav-gh { width: 32px; padding: 0; justify-content: center; } .nav-gh span { display: none; } }
 
 /* Colour tiles (the app's ColorTile): fixed Apple system colours by meaning, not tone-driven. */
+/* Colour tiles: light, in the site's airy register — a pale wash of the
+   meaning's hue lit from above, the glyph in the hue itself (iOS's tinted
+   icons), a white top highlight, a hue-tinted hairline, a soft contact shadow. */
 .ctile {
-  --tc: oklch(.64 .19 310); --tl: oklch(.70 .19 310);
-  width: 40px; height: 40px; border-radius: 10.5px; display: grid; place-items: center; margin-bottom: 16px; color: #fff;
-  background: linear-gradient(180deg, var(--tl), var(--tc));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / .35), inset 0 0 0 .5px rgb(0 0 0 / .08), 0 1px 2px rgb(0 0 0 / .12), 0 2px 6px -2px rgb(0 0 0 / .12);
+  --th: 310; --tk: 1; --tg: .58;
+  width: 40px; height: 40px; border-radius: 10.5px; display: grid; place-items: center; margin-bottom: 16px;
+  color: oklch(var(--tg) calc(.17 * var(--tk)) var(--th));
+  background: linear-gradient(180deg, oklch(.975 calc(.025 * var(--tk)) var(--th)), oklch(.915 calc(.07 * var(--tk)) var(--th)));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / .9),
+    inset 0 0 0 .5px oklch(.5 calc(.12 * var(--tk)) var(--th) / .16),
+    0 1px 2px oklch(.4 calc(.1 * var(--tk)) var(--th) / .10),
+    0 3px 8px -3px oklch(.4 calc(.1 * var(--tk)) var(--th) / .16);
 }
-.ctile svg { width: 22px; height: 22px; filter: drop-shadow(0 .5px 0 rgb(0 0 0 / .12)); }
+.ctile svg { width: 22px; height: 22px; }
 .mini.big .ctile { width: 44px; height: 44px; border-radius: 11px; margin-bottom: 18px; }
 .mini.big .ctile svg { width: 24px; height: 24px; }
-.ct-purple { --tc: oklch(.64 .19 310); --tl: oklch(.70 .19 310); }
-.ct-orange { --tc: oklch(.77 .165 64);  --tl: oklch(.83 .15 64); }
-.ct-teal   { --tc: oklch(.72 .115 215); --tl: oklch(.78 .105 215); }
-.ct-indigo { --tc: oklch(.58 .18 280);  --tl: oklch(.64 .18 280); }
-.ct-red    { --tc: oklch(.65 .21 28);   --tl: oklch(.71 .19 28); }
-.ct-blue   { --tc: oklch(.63 .2 257);   --tl: oklch(.69 .19 257); }
-.ct-green  { --tc: oklch(.74 .18 148);  --tl: oklch(.80 .17 148); }
+.ct-purple { --th: 305; }
+.ct-orange { --th: 58; --tg: .7; }
+.ct-teal   { --th: 210; --tk: .85; }
+.ct-indigo { --th: 278; }
+.ct-red    { --th: 22; }
+.ct-blue   { --th: 255; }
+.ct-green  { --th: 150; --tk: .9; }
