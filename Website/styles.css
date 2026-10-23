@@ -1,6 +1,13 @@
 /* Kaze — kaze.build
-   One tone shapes everything: --h (hue) and --c (chroma) drive the backboard,
-   the ink and the sheen on paper. Change data-tone and the whole site follows. */
+   One tone (--h hue, --c chroma) drives the product's colour: the window's
+   backboard, the ink and the sheen on paper. Change data-tone and it follows.
+
+   Colour is the product's, so the page itself is neutral: four layers, each
+   a clear step from the next — the page (near-white, a whisper of grain) ›
+   the desktop the window sits on (a deep, saturated wallpaper in the tone,
+   lit by soft blooms) › the window (the pastel backboard) › its paper
+   (white). The site's own furniture (nav, sections, buttons) stays on the
+   neutral page in ink; the tone appears where Kaze appears. */
 
 @property --h { syntax: '<number>'; inherits: true; initial-value: 262; }
 @property --c { syntax: '<number>'; inherits: true; initial-value: .055; }
@@ -14,8 +21,13 @@
   --tone:   oklch(.875 var(--c) var(--h));
   --tone-2: oklch(.865 var(--c) calc(var(--h) + 24));
   --tone-deep: oklch(.8 calc(var(--c) * 1.25) var(--h));
-  --bg:     oklch(.972 calc(var(--c) * .28) var(--h));
-  --bg-2:   oklch(.958 calc(var(--c) * .38) calc(var(--h) + 24));
+  --bg:     oklch(.982 calc(var(--c) * .06) var(--h));
+  --bg-2:   oklch(.972 calc(var(--c) * .1) var(--h));
+  --wall:
+    radial-gradient(70% 90% at 10% 110%, oklch(.58 calc(var(--c) * 2.9) var(--h)) 0, transparent 62%),
+    radial-gradient(60% 80% at 96% 106%, oklch(.64 calc(var(--c) * 2.6) calc(var(--h) + 48)) 0, transparent 60%),
+    radial-gradient(90% 70% at 58% -12%, oklch(.9 calc(var(--c) * 1.1) calc(var(--h) - 8)) 0, transparent 66%),
+    linear-gradient(160deg, oklch(.8 calc(var(--c) * 1.7) var(--h)) 0%, oklch(.7 calc(var(--c) * 2.2) calc(var(--h) + 14)) 46%, oklch(.68 calc(var(--c) * 2.3) calc(var(--h) + 40)) 100%);
   --ink:    oklch(.26 calc(var(--c) * 1.1) var(--h));
   --ink-2:  oklch(.38 calc(var(--c) * 1.1) var(--h));
   --ink-3:  oklch(.56 calc(var(--c) * 1.1) var(--h));
@@ -59,9 +71,7 @@ body {
   font-size: 17px;
   line-height: 1.5;
   color: var(--ink);
-  background:
-    linear-gradient(180deg, var(--tone) 0, var(--tone-2) 420px, var(--bg-2) 1150px, var(--bg) 1700px) no-repeat,
-    var(--bg);
+  background: linear-gradient(180deg, var(--bg) 0, var(--bg-2) 1400px) no-repeat, var(--bg-2);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -69,7 +79,7 @@ body {
 /* Grain: a dark tile in normal blend and a light tile in plus-lighter, both at 7%. */
 body::before, body::after {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background: url(noise-dark.png) 0 0 / 64px 64px; opacity: .07;
+  background: url(noise-dark.png) 0 0 / 64px 64px; opacity: .04;
 }
 body::after { background-image: url(noise-light.png); mix-blend-mode: plus-lighter; }
 
@@ -115,7 +125,7 @@ kbd {
 .nav { position: sticky; top: 0; z-index: 50; }
 .nav::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: color-mix(in oklch, var(--tone) 55%, transparent);
+  background: color-mix(in oklch, var(--bg) 78%, transparent);
   -webkit-backdrop-filter: saturate(1.4) blur(18px); backdrop-filter: saturate(1.4) blur(18px);
   opacity: 0; transition: opacity var(--t2) var(--ease);
   box-shadow: 0 .5px 0 var(--hair);
@@ -146,6 +156,17 @@ html[lang="zh-CN"] .hero h1 { letter-spacing: -.02em; line-height: 1.08; font-we
 
 /* ---------- Demo stage ---------- */
 .demo { max-width: 1280px; margin: 72px auto 0; }
+/* The desktop the window sits on: the tone deep and saturated, with blooms (and grain). */
+.desk {
+  position: relative; isolation: isolate; padding: clamp(14px, 4.2vw, 60px); border-radius: clamp(20px, 2.4vw, 32px);
+  background: var(--wall);
+  box-shadow: 0 0 0 .5px oklch(.26 calc(var(--c) * 1.1) var(--h) / .14), 0 30px 70px -34px oklch(.26 calc(var(--c) * 1.6) var(--h) / .5);
+}
+.desk::before, .desk::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: url(noise-dark.png) 0 0 / 64px 64px; opacity: .07;
+}
+.desk::after { background-image: url(noise-light.png); mix-blend-mode: plus-lighter; }
 .stage { position: relative; width: 100%; aspect-ratio: 1280 / 800; }
 .chapters { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 28px; flex-wrap: wrap; padding: 0 4px; }
 .chap-list { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--fill); box-shadow: var(--well); }
