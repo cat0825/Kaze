@@ -6,7 +6,7 @@
 
 **一个安静、快速的 macOS 浏览器，内置一个在你的标签页里干活的 agent。**
 
-<a href="https://github.com/jackwener/KazeBrowser/releases/latest"><img src="https://img.shields.io/github/v/release/jackwener/KazeBrowser?style=for-the-badge&logo=apple&logoColor=white&label=%E4%B8%8B%E8%BD%BD%20macOS%20%E7%89%88&color=000000" alt="下载 macOS 版" /></a>
+<a href="https://github.com/jackwener/Kaze/releases/latest"><img src="https://img.shields.io/github/v/release/jackwener/Kaze?style=for-the-badge&logo=apple&logoColor=white&label=%E4%B8%8B%E8%BD%BD%20macOS%20%E7%89%88&color=000000" alt="下载 macOS 版" /></a>
 <a href="https://kaze.build"><img src="https://img.shields.io/badge/%E4%B8%BB%E9%A1%B5-kaze.build-1E90FF?style=for-the-badge" alt="kaze.build" /></a>
 
 [English](README.md) · **简体中文**
@@ -25,7 +25,7 @@ Kaze 是一个可以天天用的浏览器，里面内置了 agent。你提一个
 
 ## 快速上手
 
-**1. 安装。** 在 [Releases](https://github.com/jackwener/KazeBrowser/releases/latest) 下载 DMG：
+**1. 安装。** 在 [Releases](https://github.com/jackwener/Kaze/releases/latest) 下载 DMG：
 Apple 芯片用 `Kaze-<版本>-arm64.dmg`，Intel 用 `Kaze-<版本>.dmg`，把 Kaze 拖进“应用程序”。
 免费，不用注册账号，支持 macOS 13 及以上，会自动更新。
 
@@ -67,7 +67,7 @@ Claude Desktop、Gemini CLI 和 DeepSeek Harness，通过它的 MCP 服务一次
 
 | | |
 |---|---|
-| [Releases](https://github.com/jackwener/KazeBrowser/releases) | Kaze 的安装包和更新说明 |
+| [Releases](https://github.com/jackwener/Kaze/releases) | Kaze 的安装包和更新说明 |
 | [`skills/`](skills) | Kaze 自带的技能，Agent Skills 格式 |
 | [`Website/`](Website) | 主页 [kaze.build](https://kaze.build)（纯静态文件，用 `npx wrangler deploy` 发布） |
 
@@ -77,5 +77,5 @@ Kaze 的浏览器能力来自 [BrowserMCP](https://github.com/jackwener/BrowserM
 
 ## 反馈
 
-问题和建议请提到 [Issues](https://github.com/jackwener/KazeBrowser/issues)，附上 Kaze 的版本
+问题和建议请提到 [Issues](https://github.com/jackwener/Kaze/issues)，附上 Kaze 的版本
 （Kaze › 关于 Kaze）和你的 Mac 是什么芯片。

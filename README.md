@@ -6,7 +6,7 @@
 
 **A calm, quick browser for macOS, with an agent that works in your tabs.**
 
-<a href="https://github.com/jackwener/KazeBrowser/releases/latest"><img src="https://img.shields.io/github/v/release/jackwener/KazeBrowser?style=for-the-badge&logo=apple&logoColor=white&label=Download%20for%20macOS&color=000000" alt="Download for macOS" /></a>
+<a href="https://github.com/jackwener/Kaze/releases/latest"><img src="https://img.shields.io/github/v/release/jackwener/Kaze?style=for-the-badge&logo=apple&logoColor=white&label=Download%20for%20macOS&color=000000" alt="Download for macOS" /></a>
 <a href="https://kaze.build"><img src="https://img.shields.io/badge/Website-kaze.build-1E90FF?style=for-the-badge" alt="kaze.build" /></a>
 
 **English** · [简体中文](README.zh-CN.md)
@@ -27,7 +27,7 @@ you, and a workspace for agents that never gets in your way.
 
 ## Quick start
 
-**1. Install.** Download the DMG from [Releases](https://github.com/jackwener/KazeBrowser/releases/latest),
+**1. Install.** Download the DMG from [Releases](https://github.com/jackwener/Kaze/releases/latest),
 `Kaze-<version>-arm64.dmg` for Apple silicon or `Kaze-<version>.dmg` for Intel, and drag Kaze to
 Applications. It's free, needs no account, runs on macOS 13 or later and updates itself.
 
@@ -72,7 +72,7 @@ Disconnect any of them in Settings › External agents, and it stays disconnecte
 
 | | |
 |---|---|
-| [Releases](https://github.com/jackwener/KazeBrowser/releases) | Kaze's builds and release notes |
+| [Releases](https://github.com/jackwener/Kaze/releases) | Kaze's builds and release notes |
 | [`skills/`](skills) | The skills Kaze ships with, in the Agent Skills format |
 | [`Website/`](Website) | The homepage, [kaze.build](https://kaze.build) (static files, deployed with `npx wrangler deploy`) |
 
@@ -83,5 +83,5 @@ with Chrome.
 
 ## Feedback
 
-Bugs and ideas go in [Issues](https://github.com/jackwener/KazeBrowser/issues). Please include
+Bugs and ideas go in [Issues](https://github.com/jackwener/Kaze/issues). Please include
 Kaze's version (Kaze › About Kaze) and your Mac's chip.

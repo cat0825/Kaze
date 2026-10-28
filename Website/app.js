@@ -36,7 +36,7 @@
     'term.ask': '读一下我在 Kaze 里开着的航班，把最便宜的加进 plan.md',
     'term.r1': '「飞往里斯本的航班」里有 3 个标签页', 'term.r3': '已加入 11 月 20 日周五，TP1351，€97',
     'faq.title': '下载之前。',
-    'faq.more': '还有别的问题？<a href="https://github.com/jackwener/KazeBrowser/issues">在 GitHub 上问</a>。',
+    'faq.more': '还有别的问题？<a href="https://github.com/jackwener/Kaze/issues">在 GitHub 上问</a>。',
     'faq.q1.q': 'Kaze 免费吗？', 'faq.q1.a': '免费，也不用注册账号。智能体用你选的模型运行：用 ChatGPT 登录、填你自己的 API 密钥，或者接任何兼容 OpenAI 的接口。',
     'faq.q2.q': '支持哪些 Mac？', 'faq.q2.a': 'macOS 13 及以上的 Mac。一开始就支持 Apple 芯片，Intel Mac 从 0.23 版开始支持。',
     'faq.q3.q': '我浏览的内容会离开我的 Mac 吗？', 'faq.q3.a': '活动记录、历史和设置都留在你的 Mac 上。你交给智能体一件事时，它为这件事读到的内容会发给你选的模型，不会发到别处。',
@@ -217,7 +217,7 @@
     $$('[data-meta]').forEach(function (el) { el.textContent = parts.join(' · '); });
   }
   if (window.fetch) {
-    fetch('https://api.github.com/repos/jackwener/KazeBrowser/releases/latest')
+    fetch('https://api.github.com/repos/jackwener/Kaze/releases/latest')
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (r) {
         if (!r || !r.tag_name) return;
