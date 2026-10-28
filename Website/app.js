@@ -22,8 +22,8 @@
     'nav.agent': '智能体', 'nav.tabs': '标签页', 'nav.translate': '翻译', 'nav.colour': '颜色', 'nav.privacy': '隐私',
     'cta.short': '下载',
     'hero.title': '你在浏览，<br>它在做事<span class="dot">。</span>',
-    'hero.sub': 'Kaze 是一款安静、轻快的 macOS 浏览器，内置智能体。交给它一件事，它会在自己的标签页里完成，每一步都让你看见；付款、发送或删除之前，一定先问你。',
-    'cta.download': '下载 macOS 版', 'cta.watch': '看它做事',
+    'hero.sub': '安静、轻快的 macOS 浏览器。它的智能体在自己的标签页里做事，付款、发送或删除之前，一定先问你。',
+    'cta.download': '下载 macOS 版', 'cta.watch': '看它做事', 'cta.more': '选择下载版本', 'cta.arm': 'Apple 芯片', 'cta.intel': 'Intel', 'cta.all': '所有版本',
     'works.from': '一键搬来', 'works.with': '也能借给这些 agent 用',
     'chap.agent': '订一张机票', 'chap.palette': '⌘K 面板', 'chap.translate': '翻译', 'chap.tidy': '整理标签页',
     'swatches.label': '窗口颜色',
@@ -63,9 +63,9 @@
     'more.act.t': '活动记录', 'more.act.p': '一份私密、只存在本地的记录，记下你做过和读过的内容。问它“上周那篇讲电车的文章”，它就能找到。',
     'more.media.t': '说话与下载', 'more.media.p': '输入框支持语音转文字。通过 yt-dlp 和 ffmpeg 下载视频与音频。',
     'more.mcp.t': '你的其他智能体', 'more.mcp.p': 'Claude Code、Codex 和 Cursor 可以通过 Kaze 的 MCP 服务器操作它的标签页。',
-    'tabs.title': '会自己收拾的标签页。',
+    'tabs.title': '一直整整齐齐的标签页。',
     'tabs.lead': '今天打开的标签页都在“清除”分隔线上方。一键全部关闭，点“撤销”又都回来。',
-    'tabs.f1': '12 小时没碰过的标签页，会在你回来时自动清除。',
+    'tabs.f1': '清除掉的标签页，连同分组，按“撤销”或 ⌘⇧T 就能整批回来。',
     'tabs.f2': '闲置的标签页会休眠，把内存还给你。',
     'tidy.clear': '清除', 'tidy.undo': '撤销',
     'tr.title': '任何语言，对照着读。',
@@ -227,9 +227,36 @@
           intel: names.some(function (n) { return /\.dmg$/.test(n) && !/arm64/.test(n); })
         };
         paintMeta();
+        // The download buttons go straight to the DMG: Apple silicon by default, Intel from the menu.
+        var dmg = {};
+        (r.assets || []).forEach(function (a) {
+          if (/\.dmg$/.test(a.name)) dmg[/arm64/.test(a.name) ? 'arm64' : 'x64'] = a.browser_download_url;
+        });
+        $$('[data-dl]').forEach(function (el) { if (dmg[el.dataset.dl]) el.href = dmg[el.dataset.dl]; });
+        $$('[data-dl="x64"]').forEach(function (el) { el.hidden = !dmg.x64; });
       })
       .catch(function () {});
   }
+
+  /* The download button's menu: Apple silicon, Intel, every release. */
+  $$('[data-dl-split]').forEach(function (split) {
+    var more = $('.dl-more', split), menu = $('.dl-menu', split);
+    function set(open) {
+      menu.hidden = !open;
+      more.setAttribute('aria-expanded', String(open));
+      if (open) { var first = $('a:not([hidden])', menu); if (first) first.focus(); }
+    }
+    more.addEventListener('click', function (e) { e.stopPropagation(); set(menu.hidden); });
+    menu.addEventListener('keydown', function (e) {
+      var items = $$('a:not([hidden])', menu), i = items.indexOf(document.activeElement);
+      if (e.key === 'Escape') { set(false); more.focus(); }
+      else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        items[(i + (e.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length].focus();
+      }
+    });
+    document.addEventListener('click', function (e) { if (!split.contains(e.target)) set(false); });
+  });
 
   /* ------------------------------------------------------------------
      Tone

@@ -137,33 +137,53 @@ kbd {
 .lang-btn[aria-pressed="true"] { background: #fff; color: var(--ink); box-shadow: 0 0 0 .5px var(--edge), 0 1px 2px var(--hair); }
 
 /* ---------- Hero ---------- */
-.hero { padding: 64px 28px 0; }
+/* The first screen is one picture (Aside's): the headline, the download and the live window
+   together on the window's wallpaper, one rounded card in from the page's edges. */
+.hero {
+  position: relative; isolation: isolate; margin: 8px clamp(8px, 1.2vw, 16px) 0;
+  padding: clamp(56px, 7vw, 96px) clamp(14px, 4.2vw, 60px) clamp(14px, 4.2vw, 60px);
+  border-radius: clamp(22px, 2.6vw, 36px); background: var(--wall);
+  box-shadow: inset 0 0 0 .5px oklch(.26 calc(var(--c) * 1.1) var(--h) / .16);
+  transition: background 600ms var(--ease);
+}
+.hero::before, .hero::after, .closing::before, .closing::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: url(noise-dark.png) 0 0 / 64px 64px; opacity: .07;
+}
+.hero::after, .closing::after { background-image: url(noise-light.png); mix-blend-mode: plus-lighter; }
 .hero-in { max-width: 980px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.hero-icon { width: 88px; height: 88px; margin-bottom: 30px; filter: drop-shadow(0 10px 22px oklch(.3 var(--c) var(--h) / .18)); }
+.hero-icon { width: 64px; height: 64px; margin-bottom: 26px; filter: drop-shadow(0 8px 18px oklch(.3 var(--c) var(--h) / .22)); }
 .hero h1 {
-  font-size: clamp(44px, 7.4vw, 100px); line-height: .98; letter-spacing: -.038em; font-weight: 680;
+  font-size: clamp(38px, 5.2vw, 70px); line-height: 1.04; letter-spacing: -.032em; font-weight: 600;
   color: var(--ink); text-wrap: balance;
 }
-html[lang="zh-CN"] .hero h1 { letter-spacing: -.02em; line-height: 1.08; font-weight: 640; }
-.hero-sub { margin-top: 26px; max-width: 34em; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
-.hero-cta { margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+html[lang="zh-CN"] .hero h1 { letter-spacing: -.015em; line-height: 1.12; font-weight: 600; }
+.hero-sub { margin-top: 18px; max-width: 30em; font-size: clamp(16px, 1.4vw, 18px); line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
+.hero-cta { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* Download, split (Aside's): the button gets the Apple silicon DMG, its chevron the others. */
+.dl { position: relative; display: inline-flex; }
+.dl .dl-main { border-radius: 999px 0 0 999px; padding-right: 18px; }
+.dl .dl-more { border-radius: 0 999px 999px 0; padding: 0 16px 0 13px; margin-left: 1px; }
+.dl-menu {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 30; min-width: 220px; padding: 6px;
+  border-radius: 16px; background: var(--paper, #fff); text-align: left;
+  box-shadow: 0 0 0 .5px oklch(.26 calc(var(--c) * 1.1) var(--h) / .16), 0 18px 40px -12px oklch(.2 var(--c) var(--h) / .35);
+}
+.dl-menu a {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 10px 12px;
+  border-radius: 10px; color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 520; outline: none;
+}
+.dl-menu a small { font-size: 12.5px; color: var(--ink-3); font-weight: 450; }
+.dl-menu a:hover, .dl-menu a:focus-visible { background: var(--fill); }
 .hero-meta { margin-top: 16px; font-size: 13.5px; color: var(--ink-3); letter-spacing: .005em; font-variant-numeric: tabular-nums; }
 /* The one place the page's type takes the tone: the headline's full stop. */
 .hero h1 .dot { color: var(--accent); transition: color 600ms var(--ease); }
 
 /* ---------- Demo stage ---------- */
-.demo { max-width: 1280px; margin: 72px auto 0; }
+.demo { max-width: 1280px; margin: clamp(44px, 5vw, 64px) auto 0; }
 /* The desktop the window sits on: the app's backboard recipe, one step deeper, with grain and a hairline. */
-.desk {
-  position: relative; isolation: isolate; padding: clamp(14px, 4.2vw, 60px); border-radius: clamp(20px, 2.4vw, 32px);
-  background: var(--wall);
-  box-shadow: inset 0 0 0 .5px oklch(.26 calc(var(--c) * 1.1) var(--h) / .16), 0 1px 2px rgb(0 0 0 / .06);
-}
-.desk::before, .desk::after {
-  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
-  background: url(noise-dark.png) 0 0 / 64px 64px; opacity: .07;
-}
-.desk::after { background-image: url(noise-light.png); mix-blend-mode: plus-lighter; }
+.desk { position: relative; isolation: isolate; }
 .stage { position: relative; width: 100%; aspect-ratio: 1280 / 800; }
 .chapters { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 28px; flex-wrap: wrap; padding: 0 4px; }
 .chap-list { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--fill); box-shadow: var(--well); }
@@ -845,12 +865,17 @@ html[lang="zh-CN"] .band h2 { letter-spacing: -.015em; line-height: 1.15; font-w
 .imp-go { width: 100%; height: 44px; margin-top: 16px; font-size: 15px; border-radius: 12px; }
 
 /* Closing */
-.closing { position: relative; padding: 200px 14px 28px; text-align: center; overflow: hidden; }
+.closing {
+  position: relative; isolation: isolate; margin: 168px clamp(8px, 1.2vw, 16px) 0; padding: clamp(80px, 9vw, 128px) 20px;
+  text-align: center; border-radius: clamp(22px, 2.6vw, 36px); background: var(--wall);
+  box-shadow: inset 0 0 0 .5px oklch(.26 calc(var(--c) * 1.1) var(--h) / .16);
+  transition: background 600ms var(--ease);
+}
 .closing-in { position: relative; max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-.kanji { font-size: 220px; line-height: 1; font-weight: 300; color: oklch(.26 calc(var(--c) * 1.1) var(--h) / .09); margin-bottom: -40px; font-family: "Hiragino Mincho ProN", "Songti SC", serif; user-select: none; }
-.closing h2 { font-size: clamp(40px, 6vw, 76px); line-height: 1; letter-spacing: -.045em; font-weight: 680; }
+.kanji { font-size: 120px; line-height: 1; font-weight: 300; color: oklch(.26 calc(var(--c) * 1.1) var(--h) / .14); margin-bottom: 18px; font-family: "Hiragino Mincho ProN", "Songti SC", serif; user-select: none; }
+.closing h2 { font-size: clamp(36px, 4.8vw, 64px); line-height: 1.04; letter-spacing: -.032em; font-weight: 600; }
 html[lang="zh-CN"] .closing h2 { letter-spacing: -.02em; line-height: 1.15; }
-.closing p { margin-top: 18px; font-size: 19px; color: var(--ink-2); max-width: 30em; }
+.closing p { margin-top: 16px; font-size: clamp(16px, 1.4vw, 18px); color: var(--ink-2); max-width: 30em; text-wrap: pretty; }
 
 /* Footer */
 .foot { border-top: .5px solid var(--hair); }
@@ -889,7 +914,8 @@ html[lang="zh-CN"] .closing h2 { letter-spacing: -.02em; line-height: 1.15; }
   .hero-icon { width: 68px; height: 68px; margin-bottom: 22px; }
   .hero-sub { margin-top: 18px; }
   .hero-cta { flex-direction: column; align-self: stretch; }
-  .hero-cta .btn { width: 100%; }
+  .hero-cta .dl { width: 100%; }
+  .hero-cta .dl .dl-main { flex: 1; }
   .demo { margin-top: 44px; }
   .stage { margin: 0 -6px; width: calc(100% + 12px); }
   .chapters { gap: 12px; margin-top: 20px; }
@@ -915,8 +941,8 @@ html[lang="zh-CN"] .closing h2 { letter-spacing: -.02em; line-height: 1.15; }
   .trv .seg button { padding: 0 6px; }
   .imp { padding: 16px; }
   .imp-from button { font-size: 13px; }
-  .closing { padding: 140px 14px 28px; }
-  .kanji { font-size: 160px; margin-bottom: -28px; }
+  .closing { margin-top: 120px; padding: 72px 18px; }
+  .kanji { font-size: 88px; margin-bottom: 12px; }
   .foot-in { flex-wrap: wrap; gap: 14px 20px; padding: 22px 14px 28px; }
 }
 
