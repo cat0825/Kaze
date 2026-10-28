@@ -147,7 +147,9 @@ kbd {
 html[lang="zh-CN"] .hero h1 { letter-spacing: -.02em; line-height: 1.08; font-weight: 640; }
 .hero-sub { margin-top: 26px; max-width: 34em; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
 .hero-cta { margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.hero-meta { margin-top: 16px; font-size: 13.5px; color: var(--ink-3); letter-spacing: .005em; }
+.hero-meta { margin-top: 16px; font-size: 13.5px; color: var(--ink-3); letter-spacing: .005em; font-variant-numeric: tabular-nums; }
+/* The one place the page's type takes the tone: the headline's full stop. */
+.hero h1 .dot { color: var(--accent); transition: color 600ms var(--ease); }
 
 /* ---------- Demo stage ---------- */
 .demo { max-width: 1280px; margin: 72px auto 0; }
@@ -193,6 +195,12 @@ html[lang="zh-CN"] .hero h1 { letter-spacing: -.02em; line-height: 1.08; font-we
 .sw[aria-checked="true"] { box-shadow: inset 0 0 0 .5px var(--edge), 0 0 0 2px #fff, 0 0 0 3.5px var(--ink-2); }
 .caption { margin: 18px auto 0; text-align: center; min-height: 1.5em; font-size: 15px; color: var(--ink-3); max-width: 46em; padding: 0 20px; transition: opacity var(--t2) var(--ease); }
 .caption b { color: var(--ink-2); font-weight: 560; }
+
+/* Who it works with: two quiet lines of names under the demo */
+.works { margin: 56px auto 0; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 20px; }
+.works p { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 6px 22px; font-size: 15px; color: var(--ink-3); }
+.works span { font-size: 13px; letter-spacing: .01em; }
+.works b { font-weight: 600; color: var(--ink-2); letter-spacing: -.01em; }
 
 /* =====================================================================
    The Kaze window (design size 1280×800, scaled by JS through --s)
@@ -671,7 +679,7 @@ html[lang="zh-CN"] .sec h2 { letter-spacing: -.015em; line-height: 1.15; font-we
 .grp-acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
 .grp-acts .kbtn { cursor: default; }
 
-.grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 20px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .mini { padding: 22px 20px 24px; border-radius: 20px; background: rgb(255 255 255 / .55); box-shadow: 0 0 0 .5px var(--hair); }
 .mini.big { padding: 28px 26px 30px; background: linear-gradient(180deg, #fff 70%, var(--sheen)); box-shadow: var(--shadow-paper); border-radius: 24px; }
@@ -679,6 +687,44 @@ html[lang="zh-CN"] .sec h2 { letter-spacing: -.015em; line-height: 1.15; font-we
 .mini.big h3 { font-size: 20px; }
 .mini p { margin-top: 6px; font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
 .mini.big p { font-size: 16px; }
+
+/* A dark band: the other agents, in their terminal */
+.band { margin-top: 168px; padding: 120px 28px; background: oklch(.19 calc(var(--c) * .9) var(--h)); color: #fff; transition: background 600ms var(--ease); }
+.band-in { max-width: 1144px; margin: 0 auto; }
+.band h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -.04em; font-weight: 680; text-wrap: balance; }
+html[lang="zh-CN"] .band h2 { letter-spacing: -.015em; line-height: 1.15; font-weight: 640; }
+.band .split-text > p { margin-top: 20px; font-size: clamp(17px, 1.5vw, 19.5px); line-height: 1.55; color: rgb(255 255 255 / .72); max-width: 36em; text-wrap: pretty; }
+.band .split-text > p.band-note { font-size: 15px; color: rgb(255 255 255 / .5); }
+.term { border-radius: 14px; background: #0c0e13; box-shadow: 0 0 0 .5px rgb(255 255 255 / .14), 0 30px 60px -20px rgb(0 0 0 / .6); overflow: hidden; }
+.term-bar { display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; border-bottom: .5px solid rgb(255 255 255 / .1); }
+.term-bar i { width: 12px; height: 12px; border-radius: 50%; background: rgb(255 255 255 / .16); }
+.term-bar span { margin: 0 auto; padding-right: 52px; font-size: 12.5px; color: rgb(255 255 255 / .45); }
+.term-body { padding: 20px 22px 26px; font: 14px/1.75 ui-monospace, "SF Mono", Menlo, monospace; color: rgb(255 255 255 / .9); }
+.term-body p { margin: 0; white-space: pre-wrap; }
+.term-body .t-you { margin: 10px 0 12px; color: #fff; }
+.t-dim { color: rgb(255 255 255 / .45); }
+.t-tool { color: oklch(.8 calc(var(--c) * 2 + .04) var(--h)); }
+.t-ok { color: oklch(.82 .12 150); }
+
+/* A section's kicker, above its title, in the tone */
+.sec-head > p.eyebrow, .split-text > p.eyebrow, .faq-head > p.eyebrow {
+  margin: 0 0 14px; font-size: 14px; font-weight: 620; letter-spacing: .01em; line-height: 1.4;
+  color: var(--accent); transition: color 600ms var(--ease);
+}
+.band .split-text > p.eyebrow { color: oklch(.8 calc(var(--c) * 2 + .04) var(--h)); font-size: 14px; }
+
+/* Questions */
+.faq { display: grid; grid-template-columns: 5fr 7fr; gap: 72px; align-items: start; }
+.faq-head p:not(.eyebrow) { margin-top: 20px; font-size: 17px; color: var(--ink-2); }
+.faq-head a { color: var(--ink); text-underline-offset: 3px; }
+.faq-list details { border-bottom: .5px solid var(--edge); }
+.faq-list details:first-child { border-top: .5px solid var(--edge); }
+.faq-list summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 2px; font-size: 18px; font-weight: 600; letter-spacing: -.015em; color: var(--ink); }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: ""; flex: none; width: 9px; height: 9px; border-right: 1.75px solid var(--ink-3); border-bottom: 1.75px solid var(--ink-3); transform: translateY(-3px) rotate(45deg); transition: transform var(--t2) var(--ease); }
+.faq-list details[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.faq-list summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.faq-list details p { padding: 0 40px 22px 2px; font-size: 16.5px; line-height: 1.6; color: var(--ink-2); max-width: 38em; }
 
 /* Split sections */
 .split { display: grid; grid-template-columns: 5fr 7fr; gap: 72px; align-items: center; }
@@ -820,7 +866,8 @@ html[lang="zh-CN"] .closing h2 { letter-spacing: -.02em; line-height: 1.15; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) {
-  .grid5 { grid-template-columns: repeat(3, 1fr); }
+  .grid4 { grid-template-columns: repeat(2, 1fr); }
+  .faq { gap: 48px; }
   .split { gap: 48px; }
 }
 @media (max-width: 900px) {
@@ -829,6 +876,8 @@ html[lang="zh-CN"] .closing h2 { letter-spacing: -.02em; line-height: 1.15; }
   .split.rev .split-text { order: 0; }
   .grid2 { grid-template-columns: 1fr; }
   .grid3 { grid-template-columns: 1fr; }
+  .faq { grid-template-columns: 1fr; gap: 28px; }
+  .band { margin-top: 120px; padding: 88px 28px; }
   .tones { grid-template-columns: repeat(3, 1fr); }
   .sec { padding-top: 120px; }
 }
@@ -851,8 +900,11 @@ html[lang="zh-CN"] .closing h2 { letter-spacing: -.02em; line-height: 1.15; }
   .sec-head { margin-bottom: 32px; }
   .card { border-radius: 22px; }
   .viz { height: 230px; }
-  .grid5 { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .grid5 .mini:last-child { grid-column: 1 / -1; }
+  .grid4 { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .band { margin-top: 96px; padding: 72px 18px; }
+  .term-body { font-size: 12.5px; padding: 16px; }
+  .works { margin-top: 40px; }
+  .works span { flex-basis: 100%; text-align: center; }
   .mini { padding: 18px 16px 20px; }
   .tones { grid-template-columns: 1fr 1fr; gap: 14px; }
   .facts div { grid-template-columns: 64px 1fr; }
