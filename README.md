@@ -13,6 +13,8 @@
 
 </div>
 
+<p align="center"><img src="assets/kaze.webp" width="800" alt="Kaze, with the agent finding a flight in a tab of its own" /></p>
+
 Kaze is a browser you use every day that has an agent built in. Ask it for something and it
 works in tabs of its own, next to yours: it shows each step, lets you take over at any moment,
 and asks before it pays, sends or deletes anything. The same tabs, with your logins, are open to

@@ -13,6 +13,8 @@
 
 </div>
 
+<p align="center"><img src="assets/kaze-zh.webp" width="800" alt="Kaze：agent 在自己的标签页里找机票" /></p>
+
 Kaze 是一个可以天天用的浏览器，里面内置了 agent。你提一个要求，它就在你的标签页旁边、用它自己的
 标签页去做：每一步都给你看，你随时可以接手，付款、发送、删除之前一定先问你。这些带着你登录状态的
 标签页，你已经在用的 agent（比如 Claude Code、Codex）也能用。
