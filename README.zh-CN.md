@@ -75,6 +75,16 @@ Kaze 的浏览器能力来自 [BrowserMCP](https://github.com/jackwener/BrowserM
 的 MCP 服务，用来操作已登录的浏览器，带 JavaScript 工作区和可复用的网站适配器。Kaze 借给其他 agent
 用的就是它，它也可以单独配合 Chrome 使用。
 
+## 更新排查
+
+Kaze 会从 [GitHub Releases](https://github.com/jackwener/Kaze/releases) 自己更新。如果“关于 Kaze”短暂显示有新版本，随后又回到最初的检查状态：
+
+1. 完全退出 Kaze，再重新打开一次。已经下载好的更新可能要经过重启流程才会安装。
+2. 如果版本仍然没有变化，从[发布页](https://github.com/jackwener/Kaze/releases/latest)下载匹配的 DMG，覆盖安装到现有应用上。
+3. 提交问题时附上当前版本、macOS 版本、Mac 芯片、新版本是否短暂出现，以及重启后版本是否变化。
+
+在收集信息前保留已经下载的更新和错误状态。这样可以区分发布查询失败和安装状态失败。
+
 ## 反馈
 
 问题和建议请提到 [Issues](https://github.com/jackwener/Kaze/issues)，附上 Kaze 的版本

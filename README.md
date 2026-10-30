@@ -81,6 +81,16 @@ an open-source MCP server for driving a signed-in browser with a JavaScript work
 site adapters. It is the engine Kaze lends to your other agents, and it also works on its own
 with Chrome.
 
+## Update troubleshooting
+
+Kaze updates itself from [GitHub Releases](https://github.com/jackwener/Kaze/releases). If **About Kaze** briefly finds a newer version and then returns to the initial check state:
+
+1. Quit Kaze completely and open it again once. A completed download may be waiting for the restart path.
+2. If Kaze still shows the old version, install the matching DMG from [Releases](https://github.com/jackwener/Kaze/releases/latest) over the existing app.
+3. When reporting the problem, include the installed version, macOS version, Mac chip, whether a newer version appeared briefly, and whether restarting changed the version.
+
+Keep the downloaded update and its error state intact until the report is collected; they help distinguish a release lookup failure from an install-state failure.
+
 ## Feedback
 
 Bugs and ideas go in [Issues](https://github.com/jackwener/Kaze/issues). Please include
