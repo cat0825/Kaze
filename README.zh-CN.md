@@ -52,6 +52,19 @@ Claude Desktop、Gemini CLI 和 DeepSeek Harness，通过它的 MCP 服务一次
 
 在“设置 › 外部 Agent”里可以断开任何一个，断开后不会再自动连上。
 
+## 自定义 Agent 接口
+
+Kaze 内置的 Agent 可以在“设置 › Agent”里使用自定义的 OpenAI 兼容接口。这只决定模型请求发到哪里，不会把另一个应用变成 Kaze 的浏览器控制端。
+
+以本地 Magpie 这类网关为例：
+
+1. 启动网关，确认它提供 `/v1/models`，并且聊天或 responses 接口支持工具调用。
+2. 填写网关的 OpenAI 兼容基础地址。如果服务在 3425 端口提供 `/v1/...`，填写 `http://127.0.0.1:3425/v1`。
+3. 选择 `/v1/models` 返回的准确模型 ID。浏览器任务需要模型支持 `tools` 和 `tool_choice`。
+4. 如果网关要求 API key，就填入对应密钥，再发送一个简单的浏览器任务。
+
+外部 Agent 是另一条路径。要让其他 MCP 客户端操作 Kaze 里已登录的标签页，需要为该客户端配置 [BrowserMCP](https://github.com/jackwener/BrowserMCP)；只有模型接口还不够提供浏览器工具。
+
 ## 亮点
 
 | | |

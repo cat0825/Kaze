@@ -57,6 +57,19 @@ Read the flights I left open in Kaze and add the cheapest to plan.md
 
 Disconnect any of them in Settings › External agents, and it stays disconnected.
 
+## Custom Agent endpoints
+
+Kaze's built-in Agent can use a custom OpenAI-compatible endpoint from **Settings › Agent**. This chooses the model connection; it does not make another app Kaze's browser controller.
+
+For a local gateway such as Magpie:
+
+1. Start the gateway and confirm that it exposes `/v1/models` and a chat or responses endpoint with tool calling.
+2. Enter the gateway's OpenAI-compatible base URL. For a server exposing `/v1/...` on port 3425, use `http://127.0.0.1:3425/v1`.
+3. Choose the exact model ID returned by `/v1/models`. The model must support `tools` and `tool_choice` for browser tasks.
+4. Add the gateway API key if it requires one, then send a small browser task.
+
+Kaze's external-agent path is separate. To let another MCP client drive Kaze's signed-in tabs, configure [BrowserMCP](https://github.com/jackwener/BrowserMCP) for that client; a model endpoint alone does not provide browser tools.
+
 ## Highlights
 
 | | |
